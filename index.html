@@ -3,40 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Camoy Solutions | Enterprise Addons para Odoo</title>
+    <title>Camoy Solutions | Módulos Oficiales para Odoo POS</title>
+    <meta name="description" content="Addons empresariales de alto rendimiento para Punto de Venta en Odoo 16.0 (Community & Enterprise). Soluciones de auditoría de caja antifraude y combos dinámicos.">
+    <link rel="canonical" href="https://camoysolutions.github.io">
+
+    <!-- Framework & Fuentes -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
     <style>
         :root {
             --brand-primary: #00A896;
             --brand-primary-hover: #028073;
+            --brand-primary-light: rgba(0, 168, 150, 0.12);
             --brand-dark: #0A1D37;
             --brand-navy: #050E1D;
+            --brand-purple: #714B67;
+            --brand-purple-light: #f3e8ff;
+            --surface-bg: #f8fafc;
             --surface-card: #ffffff;
+            --text-main: #0f172a;
             --text-muted: #64748b;
+            --border-color: #e2e8f0;
         }
 
         body {
             font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-            background-color: #f8fafc;
-            color: #0f172a;
+            background-color: var(--surface-bg);
+            color: var(--text-main);
             overflow-x: hidden;
+            line-height: 1.6;
         }
 
-        /* NAVBAR */
+        /* NAVEGACIÓN GLASSMORPHISM */
         .navbar-custom {
-            background: rgba(10, 29, 55, 0.95);
-            backdrop-filter: blur(12px);
+            background: rgba(10, 29, 55, 0.92);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
             border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.3s ease;
         }
 
         /* HERO SECTION */
         .hero {
-            background: radial-gradient(100% 100% at 50% 0%, #0d284f 0%, var(--brand-navy) 100%);
+            background: radial-gradient(120% 100% at 50% 0%, #0d284f 0%, var(--brand-navy) 100%);
             color: #ffffff;
-            padding: 130px 0 90px;
+            padding: 140px 0 100px;
             position: relative;
         }
         .hero::after {
@@ -46,64 +60,152 @@
             left: 0;
             right: 0;
             height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(0, 168, 150, 0.4), transparent);
+            background: linear-gradient(90deg, transparent, rgba(0, 168, 150, 0.5), transparent);
         }
 
         .badge-pill-brand {
-            background: rgba(0, 168, 150, 0.12);
+            background: rgba(0, 168, 150, 0.15);
             color: #2dd4bf;
-            border: 1px solid rgba(45, 212, 191, 0.25);
-            font-size: 0.8rem;
+            border: 1px solid rgba(45, 212, 191, 0.3);
+            font-size: 0.82rem;
             font-weight: 700;
-            padding: 6px 14px;
+            padding: 6px 16px;
             border-radius: 9999px;
             display: inline-flex;
             align-items: center;
             gap: 8px;
+            letter-spacing: 0.5px;
         }
 
-        /* CARDS */
+        /* CARDS DE PRODUCTO */
         .card-module {
-            border: 1px solid #e2e8f0;
-            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
             background: var(--surface-card);
-            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
             position: relative;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.03), 0 2px 4px -2px rgba(0, 0, 0, 0.02);
         }
         .card-module:hover {
-            transform: translateY(-6px);
-            border-color: rgba(0, 168, 150, 0.4);
-            box-shadow: 0 20px 35px -10px rgba(10, 29, 55, 0.08);
+            transform: translateY(-8px);
+            border-color: rgba(0, 168, 150, 0.45);
+            box-shadow: 0 24px 40px -12px rgba(10, 29, 55, 0.12);
         }
 
         .feature-tag {
             background-color: #f1f5f9;
             color: #334155;
             font-size: 0.75rem;
-            font-weight: 600;
-            padding: 4px 10px;
-            border-radius: 6px;
+            font-weight: 700;
+            padding: 5px 12px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
         }
 
+        .feature-tag.accent-teal {
+            background-color: rgba(0, 168, 150, 0.08);
+            color: #00A896;
+            border-color: rgba(0, 168, 150, 0.2);
+        }
+
+        .feature-tag.accent-purple {
+            background-color: rgba(113, 75, 103, 0.08);
+            color: #714B67;
+            border-color: rgba(113, 75, 103, 0.2);
+        }
+
+        /* BOTONES */
         .btn-brand {
             background-color: var(--brand-primary);
             color: #ffffff;
             font-weight: 700;
             border: none;
-            border-radius: 10px;
-            transition: background 0.2s ease;
+            border-radius: 12px;
+            padding: 12px 22px;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 12px rgba(0, 168, 150, 0.25);
         }
         .btn-brand:hover {
             background-color: var(--brand-primary-hover);
             color: #ffffff;
+            box-shadow: 0 6px 16px rgba(0, 168, 150, 0.35);
+            transform: translateY(-1px);
         }
 
-        /* STATS / TRUST */
-        .stat-card {
+        .btn-outline-custom {
+            border: 1.5px solid #cbd5e1;
+            color: #334155;
+            font-weight: 700;
             border-radius: 12px;
+            padding: 10px 18px;
             background: #ffffff;
-            border: 1px solid #e2e8f0;
+            transition: all 0.2s ease;
+        }
+        .btn-outline-custom:hover {
+            background: #f8fafc;
+            border-color: var(--brand-dark);
+            color: var(--brand-dark);
+        }
+
+        /* SECCIONES DE VALOR */
+        .value-card {
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
             padding: 24px;
+            height: 100%;
+            transition: border-color 0.2s;
+        }
+        .value-card:hover {
+            border-color: #cbd5e1;
+        }
+
+        .icon-box-round {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+        }
+
+        /* TABLA TÉCNICA */
+        .tech-table {
+            background: #ffffff;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+        .tech-table th {
+            background: #f8fafc;
+            font-weight: 800;
+            color: var(--brand-dark);
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .tech-table td {
+            padding: 16px 20px;
+            vertical-align: middle;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        /* ACCORDION FAQ */
+        .accordion-item {
+            border: 1px solid var(--border-color);
+            border-radius: 12px !important;
+            margin-bottom: 12px;
+            overflow: hidden;
+        }
+        .accordion-button:not(.collapsed) {
+            background-color: #f8fafc;
+            color: var(--brand-dark);
+            font-weight: 700;
+            box-shadow: none;
+        }
+        .accordion-button:focus {
+            box-shadow: none;
+            border-color: var(--border-color);
         }
     </style>
 </head>
@@ -113,15 +215,17 @@
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top navbar-custom py-3">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center gap-2 fw-bold text-white fs-5" href="#">
-                <!-- Contenedor Circular Blanco -->
-                <div class="d-flex align-items-center justify-content-center bg-white rounded-circle flex-shrink-0 shadow-sm" style="width: 38px; height: 38px; padding: 4px;">
+                <div class="d-flex align-items-center justify-content-center bg-white rounded-circle flex-shrink-0 shadow-sm" style="width: 38px; height: 38px; padding: 5px;">
                     <img src="logo.png" alt="Camoy Solutions" style="max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 6px;">
                 </div>
                 <span>Camoy<span style="color: #00A896;">Solutions</span></span>
             </a>
-            <div class="ms-auto d-flex align-items-center gap-3">
-                <a href="#catalogo" class="btn btn-sm btn-outline-light d-none d-sm-inline-block px-3 rounded-pill fw-semibold">
-                    Ver Módulos
+            <div class="ms-auto d-flex align-items-center gap-2 gap-sm-3">
+                <a href="#catalogo" class="btn btn-sm btn-outline-light px-3 rounded-pill fw-semibold">
+                    Catálogo
+                </a>
+                <a href="#tecnico" class="btn btn-sm btn-outline-light d-none d-md-inline-block px-3 rounded-pill fw-semibold">
+                    Ficha Técnica
                 </a>
                 <a href="mailto:contacto@carlosmoyano.com.ar" class="btn btn-sm btn-brand px-3 rounded-pill">
                     Contacto
@@ -130,112 +234,431 @@
         </div>
     </nav>
 
-    <!-- HERO -->
+    <!-- HERO SECTION -->
     <header class="hero text-center">
         <div class="container">
             <div class="badge-pill-brand mb-4">
-                <span class="d-inline-block rounded-circle" style="width: 7px; height: 7px; background: #2dd4bf;"></span>
-                Módulos Oficiales para Odoo 16.0
+                <span class="d-inline-block rounded-circle" style="width: 8px; height: 8px; background: #2dd4bf;"></span>
+                Módulos Oficiales para Odoo 16.0 • Community &amp; Enterprise
             </div>
-            <h1 class="display-4 fw-extrabold mb-3 tracking-tight text-white">
+            <h1 class="display-4 fw-extrabold mb-3 tracking-tight text-white" style="letter-spacing: -1.2px; font-weight: 800;">
                 Ingeniería de Software para <br class="d-none d-md-inline">
-                Punto de Venta en Odoo
+                Punto de Venta en Odoo ERP
             </h1>
-            <p class="lead text-white-50 mx-auto mb-4" style="max-width: 680px; font-size: 1.15rem;">
-                Addons de alta disponibilidad enfocados en control operativo, protección antifraude en caja y arquitectura reactiva OWL sin sobrecarga de código.
+            <p class="lead text-white-50 mx-auto mb-4" style="max-width: 720px; font-size: 1.15rem;">
+                Addons comerciales enfocados en <strong>control antifraude de caja</strong>, <strong>selección ágil de combos gastronómicos</strong> y persistencia relacional estricta en PostgreSQL sin sobrecarga de código.
             </p>
+            <div class="d-flex justify-content-center gap-3 flex-wrap">
+                <a href="#catalogo" class="btn btn-brand px-4 py-3 fs-6">
+                    Explorar Módulos Disponibles
+                </a>
+                <a href="https://github.com/CamoySolutions" target="_blank" rel="noopener" class="btn btn-outline-light px-4 py-3 rounded-pill fw-semibold fs-6">
+                    Ver Organización en GitHub
+                </a>
+            </div>
         </div>
     </header>
 
-    <!-- METRICAS / TRUST BANNER -->
-    <section class="py-5" style="background: #ffffff; border-bottom: 1px solid #e2e8f0;">
+    <!-- METRICAS & PILARES DE CONFIANZA -->
+    <section class="py-5" style="background: #ffffff; border-bottom: 1px solid var(--border-color);">
         <div class="container">
             <div class="row g-4 text-center">
-                <div class="col-md-4">
-                    <div class="h3 fw-bold mb-1" style="color: #0A1D37;">300+ Líneas</div>
-                    <p class="text-muted small mb-0">Código ultraliviano: menor mantenimiento mensual en Odoo Enterprise.</p>
+                <div class="col-md-3 col-6">
+                    <div class="h3 fw-bold mb-1" style="color: var(--brand-dark);">100% OWL 2</div>
+                    <p class="text-muted small mb-0">Reactividad nativa para pantallas táctiles de alta rotación.</p>
                 </div>
-                <div class="col-md-4">
-                    <div class="h3 fw-bold mb-1" style="color: #00A896;">100% Nativo OWL</div>
-                    <p class="text-muted small mb-0">Reactividad fluida en el frontend sin dependencias externas inseguras.</p>
+                <div class="col-md-3 col-6">
+                    <div class="h3 fw-bold mb-1" style="color: var(--brand-primary);">&lt; 350 Líneas</div>
+                    <p class="text-muted small mb-0">Arquitectura limpia y ultraliviana sin deuda técnica.</p>
                 </div>
-                <div class="col-md-4">
-                    <div class="h3 fw-bold mb-1" style="color: #0A1D37;">OPL-1 Licensed</div>
-                    <p class="text-muted small mb-0">Comercialización oficial en el Odoo Apps Store con garantía de soporte.</p>
+                <div class="col-md-3 col-6">
+                    <div class="h3 fw-bold mb-1" style="color: var(--brand-dark);">PostgreSQL</div>
+                    <p class="text-muted small mb-0">Bloqueos de sesión y stock persistidos a nivel transaccional.</p>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="h3 fw-bold mb-1" style="color: var(--brand-primary);">Licencia OPL-1</div>
+                    <p class="text-muted small mb-0">Garantía comercial con soporte y actualizaciones oficiales.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CATALOGO DE MODULOS -->
+    <!-- CATÁLOGO PRINCIPAL DE MÓDULOS -->
     <main id="catalogo" class="container my-5 py-5">
         <div class="text-center mb-5">
-            <h2 class="fw-bold" style="color: #0A1D37;">Catálogo de Extensiones TPV</h2>
-            <p class="text-muted">Módulos listos para instalar con compatibilidad probada en Community &amp; Enterprise.</p>
+            <span class="text-uppercase fw-bold small" style="color: var(--brand-primary); letter-spacing: 1px;">Ecosistema TPV Especializado</span>
+            <h2 class="fw-bold mt-1" style="color: var(--brand-dark); font-size: 2.3rem;">Módulos para Punto de Venta</h2>
+            <p class="text-muted mx-auto" style="max-width: 650px;">
+                Desarrollos diseñados para resolver fricciones operativas reales en franquicias, supermercados y gastronomía.
+            </p>
         </div>
 
         <div class="row justify-content-center g-4">
             
-            <!-- Módulo 1: POS Combos -->
-            <div class="col-lg-5 col-md-6">
-                <div class="card card-module h-100 p-4 d-flex flex-column">
-                    <div class="d-flex justify-content-between align-items-center mb-3">
-                        <span class="badge bg-dark px-3 py-2 rounded-pill font-monospace" style="font-size: 0.75rem;">pos_combo_category</span>
-                        <span class="fs-4 fw-bold" style="color: #00A896;">$89 <span class="fs-6 text-muted fw-normal">USD</span></span>
+            <!-- MÓDULO 1: POS COMBO CATEGORY -->
+            <div class="col-lg-6 col-md-12">
+                <div class="card card-module h-100 p-4 p-md-5 d-flex flex-column">
+                    <!-- Cabecera de Card -->
+                    <div class="d-flex justify-content-between align-items-start mb-3">
+                        <div>
+                            <span class="badge bg-dark px-3 py-2 rounded-pill font-monospace" style="font-size: 0.75rem;">pos_combo_category</span>
+                            <span class="badge px-3 py-2 rounded-pill font-monospace ms-1" style="background: rgba(113, 75, 103, 0.15); color: #714B67; font-size: 0.75rem;">v16.0.1.0.0</span>
+                        </div>
+                        <div class="text-end">
+                            <span class="fs-3 fw-bold" style="color: var(--brand-primary);">$89 <span class="fs-6 text-muted fw-normal">USD</span></span>
+                            <div class="text-muted" style="font-size: 0.7rem;">Pago único • Licencia perpetua</div>
+                        </div>
                     </div>
-                    <h3 class="h4 fw-bold mb-2" style="color: #0A1D37;">POS Combo &amp; Modificadores Dinámicos</h3>
-                    <p class="text-muted small mb-4 flex-grow-1">
-                        Interfaz táctil interactiva que guía al cajero paso a paso en menús combinados. Permite fijar límites mínimos/máximos por grupo, aplicar recargos por ingredientes extra y descontar stock real por sub-producto en PostgreSQL.
+
+                    <!-- Título y Resumen -->
+                    <h3 class="h4 fw-bold mb-2" style="color: var(--brand-dark);">POS Combo por Categorías &amp; Modificadores Dinámicos</h3>
+                    <p class="text-muted small mb-3">
+                        Ventana emergente en arquitectura táctil OWL que permite estructurar menús combinados con selección por etapas, control estricto de mínimos/máximos y descuento exacto de insumos en inventario.
                     </p>
-                    <div class="d-flex flex-wrap gap-2 mb-4">
-                        <span class="feature-tag">Control de Pasos</span>
-                        <span class="feature-tag">Stock Real</span>
-                        <span class="feature-tag">Recargos Extra</span>
+
+                    <!-- Features clave -->
+                    <div class="p-3 rounded-3 mb-4" style="background-color: #f8fafc; border: 1px solid #e2e8f0;">
+                        <ul class="list-unstyled mb-0 small text-muted d-flex flex-column gap-2">
+                            <li class="d-flex align-items-start gap-2">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00A896" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0 mt-1"><polyline points="20 6 9 17 4 12"/></svg>
+                                <span><strong>Modo Wizard (Paso a Paso) &amp; Clásico:</strong> Stepper visual para guiar al cajero o vista unificada para atención rápida.</span>
+                            </li>
+                            <li class="d-flex align-items-start gap-2">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00A896" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0 mt-1"><polyline points="20 6 9 17 4 12"/></svg>
+                                <span><strong>Reglas Mín/Máx &amp; Recargos (+$$):</strong> Pasos obligatorios u opcionales con extras en desplegables o botones cápsula.</span>
+                            </li>
+                            <li class="d-flex align-items-start gap-2">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00A896" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0 mt-1"><polyline points="20 6 9 17 4 12"/></svg>
+                                <span><strong>Trazabilidad Real de Stock:</strong> Cada sub-producto seleccionado descuenta sus existencias físicas en almacén en PostgreSQL.</span>
+                            </li>
+                            <li class="d-flex align-items-start gap-2">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00A896" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0 mt-1"><polyline points="20 6 9 17 4 12"/></svg>
+                                <span><strong>Ticket Térmico Jerárquico:</strong> Formato limpio con ramas (<code>└─</code>), ocultando líneas redundantes en $0 y mostrando alias legibles.</span>
+                            </li>
+                            <li class="d-flex align-items-start gap-2">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00A896" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0 mt-1"><polyline points="20 6 9 17 4 12"/></svg>
+                                <span><strong>Re-edición en 1 Clic &amp; Borrado en Cascada:</strong> Botón «Modificar» en la comanda sin necesidad de cancelar todo el pedido.</span>
+                            </li>
+                        </ul>
                     </div>
-                    <a href="https://apps.odoo.com/apps/modules/16.0/pos_combo_category" target="_blank" class="btn btn-brand py-2 w-100">
-                        Comprar en Odoo Apps Store
-                    </a>
+
+                    <!-- Tags -->
+                    <div class="d-flex flex-wrap gap-2 mb-4 mt-auto">
+                        <span class="feature-tag accent-purple">Wizard Interactivo</span>
+                        <span class="feature-tag">Descuento Stock</span>
+                        <span class="feature-tag">Ticket Jerárquico</span>
+                        <span class="feature-tag">Alias Comercial</span>
+                    </div>
+
+                    <!-- Botones de Acción -->
+                    <div class="row g-2">
+                        <div class="col-sm-8">
+                            <a href="https://apps.odoo.com/apps/modules/16.0/pos_combo_category" target="_blank" rel="noopener" class="btn btn-brand w-100 text-center">
+                                Comprar en Odoo Apps Store
+                            </a>
+                        </div>
+                        <div class="col-sm-4">
+                            <a href="#tecnico" class="btn btn-outline-custom w-100 text-center">
+                                Especificaciones
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <!-- Módulo 2: Blind Close -->
-            <div class="col-lg-5 col-md-6">
-                <div class="card card-module h-100 p-4 d-flex flex-column">
-                    <div class="d-flex justify-content-between align-items-center mb-3">
-                        <span class="badge bg-dark px-3 py-2 rounded-pill font-monospace" style="font-size: 0.75rem;">pos_blind_close</span>
-                        <span class="fs-4 fw-bold" style="color: #00A896;">$69 <span class="fs-6 text-muted fw-normal">USD</span></span>
+            <!-- MÓDULO 2: POS BLIND CLOSE -->
+            <div class="col-lg-6 col-md-12">
+                <div class="card card-module h-100 p-4 p-md-5 d-flex flex-column">
+                    <!-- Cabecera de Card -->
+                    <div class="d-flex justify-content-between align-items-start mb-3">
+                        <div>
+                            <span class="badge bg-dark px-3 py-2 rounded-pill font-monospace" style="font-size: 0.75rem;">pos_blind_close</span>
+                            <span class="badge px-3 py-2 rounded-pill font-monospace ms-1" style="background: rgba(0, 168, 150, 0.15); color: #00A896; font-size: 0.75rem;">v16.0.2.0.0</span>
+                        </div>
+                        <div class="text-end">
+                            <span class="fs-3 fw-bold" style="color: var(--brand-primary);">$89 <span class="fs-6 text-muted fw-normal">USD</span></span>
+                            <div class="text-muted" style="font-size: 0.7rem;">Pago único • Licencia perpetua</div>
+                        </div>
                     </div>
-                    <h3 class="h4 fw-bold mb-2" style="color: #0A1D37;">POS Cierre de Caja a Ciegas Blindado</h3>
-                    <p class="text-muted small mb-4 flex-grow-1">
-                        Protocolo estricto de arqueo físico en dos fases: enmascara los saldos teóricos esperados y las diferencias con asteriscos (***) hasta el conteo real, anula atajos de navegación y asienta los importes irreversiblemente en base de datos.
+
+                    <!-- Título y Resumen -->
+                    <h3 class="h4 fw-bold mb-2" style="color: var(--brand-dark);">POS Cierre a Ciegas &amp; Auditoría de Caja (Anti-Fraude)</h3>
+                    <p class="text-muted small mb-3">
+                        Protocolo de seguridad que oculta los saldos teóricos al cajero durante el arqueo físico y genera una matriz completa de contrastación Real vs. Sistema para todos los medios de cobro.
                     </p>
-                    <div class="d-flex flex-wrap gap-2 mb-4">
-                        <span class="feature-tag">Anti-Tamper</span>
-                        <span class="feature-tag">Arqueo 2 Fases</span>
-                        <span class="feature-tag">Auditoría Gerencial</span>
+
+                    <!-- Features clave -->
+                    <div class="p-3 rounded-3 mb-4" style="background-color: #f8fafc; border: 1px solid #e2e8f0;">
+                        <ul class="list-unstyled mb-0 small text-muted d-flex flex-column gap-2">
+                            <li class="d-flex align-items-start gap-2">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00A896" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0 mt-1"><polyline points="20 6 9 17 4 12"/></svg>
+                                <span><strong>Cierre a Ciegas en 2 Pasos:</strong> Saldos esperados enmascarados con asteriscos (<code>***</code>) hasta confirmar el conteo físico irreversible.</span>
+                            </li>
+                            <li class="d-flex align-items-start gap-2">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00A896" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0 mt-1"><polyline points="20 6 9 17 4 12"/></svg>
+                                <span><strong>Blindaje en PostgreSQL &amp; Navegador:</strong> Anula el botón «Atrás» (<code>popstate</code>) y bloquea casilleros tras confirmar el recuento.</span>
+                            </li>
+                            <li class="d-flex align-items-start gap-2">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00A896" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0 mt-1"><polyline points="20 6 9 17 4 12"/></svg>
+                                <span><strong>Matriz Real vs Sistema Multimétodo:</strong> Audita no solo efectivo, sino también tarjetas, QR, billeteras virtuales y transferencias.</span>
+                            </li>
+                            <li class="d-flex align-items-start gap-2">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00A896" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0 mt-1"><polyline points="20 6 9 17 4 12"/></svg>
+                                <span><strong>Transcripción de Planillas Físicas:</strong> Permite transcribir cierres en papel directamente en la sesión de backend con recálculo automático.</span>
+                            </li>
+                            <li class="d-flex align-items-start gap-2">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00A896" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0 mt-1"><polyline points="20 6 9 17 4 12"/></svg>
+                                <span><strong>Menú de Auditoría de Descuadres:</strong> Vista dedicada con filtros inmediatos de faltantes, sobrantes y conciliación masiva.</span>
+                            </li>
+                        </ul>
                     </div>
-                    <a href="https://apps.odoo.com/apps/modules/16.0/pos_blind_close" target="_blank" class="btn btn-brand py-2 w-100">
-                        Comprar en Odoo Apps Store
-                    </a>
+
+                    <!-- Tags -->
+                    <div class="d-flex flex-wrap gap-2 mb-4 mt-auto">
+                        <span class="feature-tag accent-teal">Anti-Tamper DB</span>
+                        <span class="feature-tag">Multimétodo Digital</span>
+                        <span class="feature-tag">Planillas en Papel</span>
+                        <span class="feature-tag">Control de Faltantes</span>
+                    </div>
+
+                    <!-- Botones de Acción -->
+                    <div class="row g-2">
+                        <div class="col-sm-8">
+                            <a href="https://apps.odoo.com/apps/modules/16.0/pos_blind_close" target="_blank" rel="noopener" class="btn btn-brand w-100 text-center">
+                                Comprar en Odoo Apps Store
+                            </a>
+                        </div>
+                        <div class="col-sm-4">
+                            <a href="#tecnico" class="btn btn-outline-custom w-100 text-center">
+                                Especificaciones
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
 
         </div>
     </main>
 
-    <!-- FOOTER / SOPORTE -->
-    <footer class="py-5 text-center bg-white border-top">
-        <div class="container">
-            <h4 class="fw-bold mb-2" style="color: #0A1D37;">Camoy Solutions</h4>
-            <p class="text-muted small mb-3">Módulos especializados, auditoría y desarrollos a medida sobre el ecosistema Odoo ERP.</p>
-            <a href="mailto:contacto@carlosmoyano.com.ar" class="btn btn-outline-dark px-4 py-2 rounded-pill fw-semibold small">
-                contacto@carlosmoyano.com.ar
+    <!-- ANÁLISIS EN PROFUNDIDAD / DIFERENCIALES TÉCNICOS -->
+    <section class="py-5" style="background-color: #ffffff; border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);">
+        <div class="container py-4">
+            <div class="text-center mb-5">
+                <span class="text-uppercase fw-bold small" style="color: var(--brand-primary); letter-spacing: 1px;">Arquitectura de Clase Empresarial</span>
+                <h2 class="fw-bold mt-1" style="color: var(--brand-dark);">¿Por qué elegir los módulos de Camoy Solutions?</h2>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="value-card">
+                        <div class="icon-box-round" style="background-color: rgba(0, 168, 150, 0.1); color: var(--brand-primary);">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                        </div>
+                        <h4 class="h5 fw-bold" style="color: var(--brand-dark);">Seguridad Sin Parches Cosméticos</h4>
+                        <p class="text-muted small mb-0">
+                            Muchos módulos ocultan saldos mediante simples reglas CSS que un cajero puede inspeccionar en el navegador. Nuestras soluciones persisten el estado de bloqueo en PostgreSQL e interceptan eventos nativos para anular retrocesos o cierres accidentales.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="value-card">
+                        <div class="icon-box-round" style="background-color: rgba(113, 75, 103, 0.1); color: var(--brand-purple);">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+                        </div>
+                        <h4 class="h5 fw-bold" style="color: var(--brand-dark);">Cero Código Innecesario (Zero Bloat)</h4>
+                        <p class="text-muted small mb-0">
+                            Mantenemos una densidad de código ultracompacta (&lt; 350 líneas por módulo). Esto asegura un consumo casi nulo de memoria RAM en el navegador táctil y reduce sustancialmente el costo mensual de mantenimiento en instancias Odoo Enterprise.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="value-card">
+                        <div class="icon-box-round" style="background-color: rgba(10, 29, 55, 0.08); color: var(--brand-dark);">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                        </div>
+                        <h4 class="h5 fw-bold" style="color: var(--brand-dark);">Soporte Técnico Directo del Autor</h4>
+                        <p class="text-muted small mb-0">
+                            Sin intermediarios ni mesas de ayuda automatizadas. Las consultas técnicas, dudas de instalación o sugerencias de evolución son atendidas directamente por el desarrollador líder, asegurando respuestas rápidas y soluciones efectivas.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FICHA TÉCNICA COMPARATIVA -->
+    <section id="tecnico" class="container my-5 py-4">
+        <div class="text-center mb-5">
+            <span class="text-uppercase fw-bold small" style="color: var(--brand-primary); letter-spacing: 1px;">Especificaciones Técnicas</span>
+            <h2 class="fw-bold mt-1" style="color: var(--brand-dark);">Cuadro Comparativo de Compatibilidad</h2>
+        </div>
+
+        <div class="tech-table shadow-sm">
+            <div class="table-responsive">
+                <table class="table mb-0 small">
+                    <thead>
+                        <tr>
+                            <th style="width: 25%;">Atributo Técnico</th>
+                            <th style="width: 37.5%; color: var(--brand-purple);">pos_combo_category</th>
+                            <th style="width: 37.5%; color: var(--brand-primary);">pos_blind_close</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="fw-bold">Versión del Addon</td>
+                            <td><span class="badge bg-light text-dark border">16.0.1.0.0</span></td>
+                            <td><span class="badge bg-light text-dark border">16.0.2.0.0</span></td>
+                        </tr>
+                        <tr>
+                            <td class="fw-bold">Ediciones Compatibles</td>
+                            <td>Odoo 16.0 (Community &amp; Enterprise / Odoo.sh)</td>
+                            <td>Odoo 16.0 (Community &amp; Enterprise / Odoo.sh)</td>
+                        </tr>
+                        <tr>
+                            <td class="fw-bold">Dependencias Obligatorias</td>
+                            <td><code>point_of_sale</code>, <code>stock</code></td>
+                            <td><code>point_of_sale</code></td>
+                        </tr>
+                        <tr>
+                            <td class="fw-bold">Modelos del Backend</td>
+                            <td><code>pos.combo.category</code>, <code>pos.combo.template</code>, <code>product.template</code></td>
+                            <td><code>pos.session</code>, <code>pos.session.closing.line</code>, <code>pos.config</code></td>
+                        </tr>
+                        <tr>
+                            <td class="fw-bold">Componentes OWL Frontend</td>
+                            <td><code>ComboPopup</code>, <code>Orderline</code>, <code>ProductScreen</code></td>
+                            <td><code>ClosePosPopup</code> (herencia reactiva extendida)</td>
+                        </tr>
+                        <tr>
+                            <td class="fw-bold">Rendimiento en Inventario</td>
+                            <td>Descuento estricto de existencias por insumo en PostgreSQL</td>
+                            <td>No altera stock (interviene balances y líneas contables)</td>
+                        </tr>
+                        <tr>
+                            <td class="fw-bold">Licenciamiento</td>
+                            <td>Odoo Proprietary License v1.0 (OPL-1)</td>
+                            <td>Odoo Proprietary License v1.0 (OPL-1)</td>
+                        </tr>
+                        <tr>
+                            <td class="fw-bold">Precio Oficial</td>
+                            <td class="fw-bold text-success">$89.00 USD</td>
+                            <td class="fw-bold text-success">$89.00 USD</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- PREGUNTAS FRECUENTES (FAQ) -->
+    <section class="container my-5 py-4">
+        <div class="text-center mb-5">
+            <span class="text-uppercase fw-bold small" style="color: var(--brand-primary); letter-spacing: 1px;">Resolución de Dudas</span>
+            <h2 class="fw-bold mt-1" style="color: var(--brand-dark);">Preguntas Frecuentes</h2>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="accordion" id="faqAccordion">
+                    
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="faq1">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1">
+                                ¿Los módulos son compatibles con Odoo Community y Enterprise?
+                            </button>
+                        </h2>
+                        <div id="collapse1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body text-muted small">
+                                Sí, ambos módulos están programados respetando estrictamente los modelos base del núcleo (<code>point_of_sale</code> y <code>stock</code>). No tienen dependencias con librerías privativas de <code>web_enterprise</code>, lo que garantiza su funcionamiento sin advertencias tanto en servidores Community autohospedados como en instancias Enterprise y entornos <strong>Odoo.sh</strong>.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="faq2">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2">
+                                ¿Cómo se instalan una vez comprados en Odoo Apps Store?
+                            </button>
+                        </h2>
+                        <div id="collapse2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body text-muted small">
+                                La instalación es estándar: descargas el archivo comprimido (.zip) desde la tienda de Odoo, copias la carpeta dentro de tu directorio de <code>custom_addons</code>, reinicias el servicio de Odoo y haces clic en <strong>«Actualizar lista de aplicaciones»</strong> desde el backend para proceder a la instalación en un solo clic. En Odoo.sh se puede vincular directamente como submódulo de Git.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="faq3">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3">
+                                ¿Qué incluye la compra de la licencia OPL-1?
+                            </button>
+                        </h2>
+                        <div id="collapse3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body text-muted small">
+                                La licencia propietaria OPL-1 te otorga el derecho de uso perpetuo del código fuente en tu base de datos de producción y entornos de prueba vinculados, acceso a actualizaciones para corregir posibles incidencias en la versión 16.0 y soporte técnico directo vía correo electrónico.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="faq4">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4">
+                                ¿Puedo solicitar adaptaciones personalizadas o desarrollos a medida?
+                            </button>
+                        </h2>
+                        <div id="collapse4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body text-muted small">
+                                Sí. En <strong>Camoy Solutions</strong> desarrollamos extensiones a medida para Punto de Venta, facturación electrónica y circuitos logísticos en Odoo ERP. Puedes ponerte en contacto con nosotros para coordinar requerimientos específicos o integraciones personalizadas.
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BANNER DE CONTACTO / CTA -->
+    <section class="container my-5">
+        <div class="p-5 rounded-4 text-center text-white" style="background: linear-gradient(135deg, var(--brand-dark) 0%, #0d2b52 100%); border: 1px solid rgba(255, 255, 255, 0.08); box-shadow: 0 20px 30px -10px rgba(10, 29, 55, 0.2);">
+            <h3 class="fw-bold mb-2">¿Consultas técnicas o implementación en tu empresa?</h3>
+            <p class="text-white-50 mx-auto mb-4 small" style="max-width: 580px;">
+                Escríbenos directamente para resolver dudas de compatibilidad, cotizaciones por volumen o asistencia técnica especializada sobre el ecosistema Odoo.
+            </p>
+            <a href="mailto:contacto@carlosmoyano.com.ar" class="btn btn-brand px-4 py-3 rounded-pill">
+                Contactar a Carlos Moyano (Camoy Solutions)
             </a>
-            <div class="mt-4 pt-3 border-top text-muted small" style="font-size: 0.8rem;">
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="py-5 bg-white border-top">
+        <div class="container text-center">
+            <div class="d-flex align-items-center justify-content-center gap-2 mb-2">
+                <div class="d-flex align-items-center justify-content-center bg-dark rounded-circle flex-shrink-0" style="width: 28px; height: 28px; padding: 4px;">
+                    <img src="logo.png" alt="Camoy Solutions" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+                </div>
+                <span class="fw-bold fs-5" style="color: var(--brand-dark);">Camoy<span style="color: #00A896;">Solutions</span></span>
+            </div>
+            <p class="text-muted small mb-3">
+                Módulos empresariales de alto rendimiento, auditoría de procesos y consultoría de software para Odoo ERP.
+            </p>
+            <div class="d-flex justify-content-center gap-3 mb-4">
+                <a href="https://github.com/CamoySolutions" target="_blank" rel="noopener" class="text-muted small text-decoration-none">GitHub Organization</a>
+                <span class="text-muted">•</span>
+                <a href="mailto:contacto@carlosmoyano.com.ar" class="text-muted small text-decoration-none">contacto@carlosmoyano.com.ar</a>
+                <span class="text-muted">•</span>
+                <a href="https://camoysolutions.github.io" class="text-muted small text-decoration-none">camoysolutions.github.io</a>
+            </div>
+            <div class="pt-3 border-top text-muted small" style="font-size: 0.8rem;">
                 © 2026 Camoy Solutions. Desarrollado por Carlos Moyano. Todos los derechos reservados.
             </div>
         </div>
     </footer>
 
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
